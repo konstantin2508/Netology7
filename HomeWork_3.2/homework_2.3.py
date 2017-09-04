@@ -1,5 +1,4 @@
 def detect_encoding(file):
-    import json
     import chardet
     with open(file, 'rb') as f:
         data = f.read()
@@ -14,7 +13,7 @@ def open_file(file, file_encoding):
     return news
 
 
-def analys_news(news):
+def analysis_news(news):
     title = news['rss']['channel']['title']
     news_text = ''
     for item in news['rss']['channel']['items']:  # Создаем строку со всеми новостями из файла
@@ -28,7 +27,7 @@ def analys_news(news):
             else:
                 news_dct[i] = 1
     # Упорядочим элементы словаря по значениям.
-    news_list_sorted = sorted(news_dct.items(), key=lambda item: item[1], reverse=True)
+    news_list_sorted = sorted(news_dct.items(), key=lambda element: element[1], reverse=True)
     return title, news_list_sorted
 
 
@@ -44,7 +43,7 @@ def main():
     for file in files_list:
         file_encoding = detect_encoding(file)
         news = open_file(file, file_encoding)
-        title, news_list_sorted = analys_news(news)
+        title, news_list_sorted = analysis_news(news)
         print_top10(title, news_list_sorted)
 
 
