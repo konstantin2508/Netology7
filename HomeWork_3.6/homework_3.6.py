@@ -97,7 +97,6 @@ class Goose(FarmAnimals, Birds):
         self.average_meet = average_meet
         super().__init__(age, weight)
 
-
 Cow_object = Cow(2, 40, 2)
 Goat_object = Goat(1, 15, 2, 1.5)
 Sheep_object = Sheep(1, 10, 5)
